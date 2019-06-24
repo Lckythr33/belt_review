@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+    <title>Ninja Gold</title>
+</head>
+<body style= "padding-bottom:20px;">
+    <div class="locations">
+    <form action='/process_money' method="post">
+        {% csrf_token %}
+    <div class="row">
+            <div class="col s12 m7"  style="width: 200px;">
+              <div class="card">
+                <div class="card-image">
+                  <img src="../static/imgs/farm.png">
+                  <span class="card-title black-text">Farm</span>
+                </div>
+                <div class="card-content">
+                  <p>Earn from 10-20 Gold!</p>
+                </div>
+                <div class="card-action">
+                    <input type="hidden" name="building" value="farm" />
+                    <input type="submit" value="Find Gold!"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+    <form action='/process_money' method="post">
+        {% csrf_token %}
+    <div class="row">
+            <div class="col s12 m7" style="width: 200px;">
+              <div class="card">
+                <div class="card-image">
+                  <img src="../static/imgs/cave.png">
+                  <span class="card-title black-text">Cave</span>
+                </div>
+                <div class="card-content">
+                  <p>Earn from 5-10 Gold!</p>
+                </div>
+                <div class="card-action">
+                    <input type="hidden" name="building" value="cave" />
+                    <input type="submit" value="Find Gold!"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+   
+ </div> <!--end div locations-->
+
+<!--    
+  <div class="col s5 m5"></div>
+  <form class="col s12">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">Registration:</span>
+          
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">account_circle</i>
+                  <input id="icon_prefix" type="text" class="validate">
+                  <label for="icon_prefix">Full Name:</label>
+                </div>
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">account_circle</i>
+                  <input id="icon_alias" type="text" class="validate">
+                  <label for="icon_alias">Alias:</label>
+                </div>
+              <div class="input-field col s12">
+                <i class="material-icons prefix">email</i>
+                <input id="email" type="email" class="validate">
+                <label for="email">Email:</label>
+                <span class="helper-text" data-error="Please use a valid email format!" data-success="Valid email format!">Use Valid Email!</span>
+              </div>
+              <div class="input-field col s12">
+                  <i class="material-icons prefix">lock_open</i>
+                  <input id="icon_pass" type="text" class="validate">
+                  <label for="icon_pass">Password:</label>
+                </div>
+              <div class="input-field col s12">
+                  <i class="material-icons prefix">lock</i>
+                  <input id="icon_confirm" type="text" class="validate">
+                  <label for="icon_confirm">Confirm Password:</label>
+                </div>
+          
+        </div>
+        <div class="card-action">
+          <button class="btn waves-effect waves-light" type="submit" name="action">Register
+          <i class="material-icons right">done_outline</i>
+          </button>
+        </div>
+      </div>
+    </form>
+    </div>  
+  
+  <div class="col s4 m4">
+     <form class="col s6">
+     
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">Login:</span>
+            <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">email</i>
+                  <input id="log_email" type="email" class="validate">
+                  <label for="log_email">Email:</label>
+                  <span class="helper-text" data-error="Please use a valid email format!" data-success="Valid email format!">Use Valid Email!</span>
+                </div>
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">lock_open</i>
+                    <input id="log_pass" type="text" class="validate">
+                    <label for="log_pass">Password:</label>
+                  </div>
+             
+            </div>
+          </div>
+        
+        <div class="card-action">
+          <button class="btn waves-effect waves-light" type="submit" name="action">Login
+          <i class="material-icons right">verified_user</i>
+          </button> 
+        </div>
+      </div> 
+  </form>
+</div> -->
+
+
+
+</body>
+</html>

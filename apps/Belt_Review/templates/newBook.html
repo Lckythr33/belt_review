@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel = "stylesheet"
+    href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel = "stylesheet"
+    href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+<script type = "text/javascript"
+    src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+</script> 
+
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+
+</script>
+    <title>Add Your New Book!</title>
+</head>
+<body>
+    
+        <form action='/add_book' method="post">
+            {% csrf_token %}
+        <div class="row">
+                <div class="col s12 m7" style="width: 500px;" >
+                  <div class="card blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">Registration:</span>
+                        {% if messages %}
+                        <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><span style="color:red;">{{ message }}</span></li>
+                        {% endfor %}
+                        </ul>
+                        {% endif %}
+
+                        <div class= "input-field">
+                            <i class="material-icons prefix">book</i>
+                            <input id="icon_prefix" type="text" name="book_title" class="validate">
+                            <label for="icon_prefix">Book Title:</label>
+                          </div>
+
+                            <div class = "row input-field" style="margin-left:80px">
+                                    <p>Choose Authors:</p>
+                                    <select multiple name='choose'>
+                                            {% for author in all_authors %}
+                                            <option value = {{author.id}}>{{author.full_name}}</option>
+                                            {% endfor %}
+                                </select>              
+                            </div>
+
+                        <div class="input-field" style="margin-left:80px">
+                            <i class="material-icons prefix">account_box</i>
+                            <input id="icon_alias" type="text" name="new_author" class="validate">
+                            <label for="icon_alias">New Author:</label>
+                        </div>
+                        <div class="input-field">
+                        <i class="material-icons prefix">speaker_notes</i>
+                        <input id="email" type="text" name="review" class="validate">
+                        <label for="email">Description:</label>
+                        </div>
+                        <div class = "row input-field" style="margin-left:45px; width:25px;">
+                                <p>Rating:</p>
+                                <select name='rating'>
+                                    <option value = "5">5</option>
+                                    <option value = "4">4</option>
+                                    <option value = "3">3</option>
+                                    <option value = "2">2</option>
+                                    <option value = "1">1</option>
+                                </select>               
+                        </div>
+
+                    <div class="card-action">
+                        <button class="btn waves-effect waves-light" type="submit" value="Reg">Add Book
+                        <i class="material-icons right">input</i>
+                        </button>
+                        <a href ='/books' class="waves-effect waves-light btn">Back</a>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+</body>
+</html>

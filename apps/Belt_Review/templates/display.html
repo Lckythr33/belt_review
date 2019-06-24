@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel = "stylesheet"
+    href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel = "stylesheet"
+    href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+<script type = "text/javascript"
+    src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+</script> 
+
+<script>
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+
+</script>
+    <title>This Book!</title>
+</head>
+<body>
+    
+  <div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title"><h3>{{this_book.title}}</h3> <h4>ID: {{this_book.id}}</h4></span>
+              <h5>Description:</h5>
+              <p>{{this_book.description}}</p>
+            <table class='highlight'>
+                    <thead>
+                      <tr>
+                          <th>Authors:</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for author in authors %}
+                      <tr>
+                        <td>{{author.full_name}}</td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+            <div class="card-action">
+              <a href="/books">Back to home</a>
+            </div>
+          </div>
+        </div>
+        
+        <form action="/display_book/{{this_book.id}}" method="POST">
+          {% csrf_token %}
+          <div class="col s12 m6">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text">
+                <span class="card-title">Add Review:</span>
+                <div class="input-field col s12">
+                    <textarea id="reviewbox" class="materialize-textarea" name ="bookreview"></textarea>
+                    <label for="textarea1">Enter review here:</label>
+                  </div>
+                  <input type="hidden" name="book_id" value={{this_book.id}}>
+              </div>
+              <div class = "row input-field" style="margin-left:45px; width:25px;">
+                  <p>Rating:</p>
+                  <select name='rev_rating'>
+                      <option value = "5">5</option>
+                      <option value = "4">4</option>
+                      <option value = "3">3</option>
+                      <option value = "2">2</option>
+                      <option value = "1">1</option>
+                  </select>               
+              </div>
+              <div class="card-action">
+                  <button class="btn waves-effect waves-light" type="submit" value="Reg">Add Review
+                      <i class="material-icons right">input</i>
+                      </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="row">
+          <div class="col s12 m6">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text">
+                <span class="card-title">Reviews:</span>
+                {% for review in reviews %}
+              <div class="row s12">
+                <div class="col s12">
+                    <div class="card blue-grey darken-1">
+                      <div class="card-content white-text">
+                        <h5> <a href="/users/{{review.creator_id}}">{{review.creator}}:</a></h5>
+                        <small> {% with ''|center:review.rating as range %}
+                                    {% for i in range %}
+                                      <i class="material-icons prefix">stars</i>
+                                    {% endfor %}
+                                {% endwith %}
+                        </small> 
+                        <p> {{review.review}}  </p>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+
+          
+</body>
+</html>
